@@ -1,0 +1,350 @@
+#import calendar module
+import calendar
+#import tkinter module
+from tkinter import *
+#This function displays calendar for a given year
+def showCalender():
+    gui = Tk()
+    gui.config(background='grey')
+    gui.title("Calender for the year")
+    gui.geometry("550x600")
+    year = int(year_field.get())
+    gui_content= calendar.calendar(year)
+    calYear = Label(gui, text= gui_content, font= "Consolas 10 bold")
+    calYear.grid(row=5, column=1,padx=20)
+    gui.mainloop()
+
+    #Driver code
+if __name__=='__main__':
+    new = Tk()
+    new.config(background='grey')
+    new.title("Calender")
+    new.geometry("250x140")
+    cal = Label(new, text="Calender",bg='grey',font=("times", 28, "bold"))
+    #Label for enter year
+    year = Label(new, text="Enter year", bg='dark grey')
+    #text box for year input
+    year_field=Entry(new)
+    button = Button(new, text='Show Calender',fg='Black',bg='Blue',command=showCalender)
+    #adjusting widgets in position
+    cal.grid(row=1, column=1)
+    year.grid(row=2, column=1)
+    year_field.grid(row=3, column=1)
+    button.grid(row=4, column=1)
+    Exit.grid(row=6, column=1)
+    new.mainloop()
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+def add(a, b):
+    sum = a + b
+    return sum
+
+def sub(a, b):
+    diff = a - b
+    return diff
+
+def mul(a, b):
+    multi = a*b
+    return multi
+
+def div(a, b):
+    divi = a/b
+    return divi
+
+a = int(input("Enter the first number: "))
+b = int(input("Enter the second number: "))
+
+print("The Sum is: ", add(a,b))
+print("The Difference is: ", sub(a,b))
+print("The product is: ", mul(a,b))
+print("The answer is: ", div(a,b))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import time
+from plyer import notification
+
+if __name__ == "__main__":
+    while True:
+        notification.notify(
+            title = "ALERT!!!",
+            message = "Take a break! It has been 3 seconds",
+            timeout = 10
+        )
+        time.sleep(3)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        import random
+from random import seed, randint
+import numpy
+
+def game(winningdoor, selecteddoor, change=False):
+    assert winningdoor < 3
+    assert winningdoor >= 0
+
+    # Presenter removes the first door that was not selected neither winning
+    removeddoor = next(i for i in range(3) if i != selecteddoor and i != winningdoor)
+
+    # Player decides to change its choice
+    if change:
+        selecteddoor = next(i for i in range(3) if i != selecteddoor and i != removeddoor)
+
+    # We suppose the player never wants to change its initial choice.
+    return selecteddoor == winningdoor
+
+
+if __name__ == '__main__':
+    playerdoors = numpy.random.random_integers(0,2, (1000 * 1000 * 1,))
+
+    winningdoors = [d for d in playerdoors if game(1, d)]
+    print("Winning percentage without changing choice: ", len(winningdoors) / len(playerdoors))
+
+    winningdoors = [d for d in playerdoors if game(1, d, change=True)]
+    print("Winning percentage while changing choice: ", len(winningdoors) / len(playerdoors))
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    from textblob import TextBlob
+words = ["Bu M Mo is ba", "Yo Ae Bd"]
+corrected_words = []
+for i in words:
+    corrected_words.append(TextBlob(i))
+print("Wrong words :", words)
+print("Corrected Words are :")
+for i in corrected_words:
+    print(i.correct(), end=" ")
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    import tkinter as tk
+from tkinter.filedialog import askopenfilename, asksaveasfilename
+
+def open_file():
+    """Open a file for editing."""
+    filepath = askopenfilename(
+        filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")]
+    )
+    if not filepath:
+        return
+    txt_edit.delete(1.0, tk.END)
+    with open(filepath, "r") as input_file:
+        text = input_file.read()
+        txt_edit.insert(tk.END, text)
+    window.title(f"Aleks Is Smart - {filepath}")
+
+def save_file():
+    """Save the current file as a new file."""
+    filepath = asksaveasfilename(
+        defaultextension="txt",
+        filetypes=[("Text Files", "*.txt"), ("All Files", "*.*")],
+    )
+    if not filepath:
+        return
+    with open(filepath, "w") as output_file:
+        text = txt_edit.get(1.0, tk.END)
+        output_file.write(text)
+    window.title(f"Aleks Is Smart - {filepath}")
+
+window = tk.Tk()
+window.title("Aleks Is Smart")
+window.rowconfigure(0, minsize=800, weight=1)
+window.columnconfigure(1, minsize=800, weight=1)
+
+txt_edit = tk.Text(window)
+fr_buttons = tk.Frame(window, relief=tk.RAISED, bd=2)
+btn_open = tk.Button(fr_buttons, text="Open", command=open_file)
+btn_save = tk.Button(fr_buttons, text="Save As...", command=save_file)
+
+btn_open.grid(row=0, column=0, sticky="ew", padx=5, pady=5)
+btn_save.grid(row=1, column=0, sticky="ew", padx=5)
+
+fr_buttons.grid(row=0, column=0, sticky="ns")
+txt_edit.grid(row=0, column=1, sticky="nsew")
+
+window.mainloop()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib.colors import LogNorm
+
+dx, dy = 0.015, 0.05
+x = np.arange(-4.0, 4.0, dx)
+y = np.arange(-4.0, 4.0, dy)
+X, Y = np.meshgrid(x, y)
+extent = np.min(x), np.max(x), np.min(y), np.max(y)
+z1 = np.add.outer(range(8), range(8)) % 2
+plt.imshow(z1, cmap="binary_r", interpolation="nearest", extent=extent, alpha=1)
+
+def chess(x, y):
+    return (1 - x / 2 + x ** 5 + y ** 6) * np.exp(-(x ** 2 + y ** 2))
+z2 = chess(X, Y)
+plt.imshow(z2, alpha=0.7, interpolation="bilinear", extent=extent)
+plt.title("Chess Board with Python")
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+user_input = str(input("Enter a Phrase: "))
+text = user_input.split()
+a = " "
+for i in text:
+    a = a+str(i[0]).upper()
+print(a)
+
+
+
+
+
+
+
+
+from datetime import datetime   
+from playsound import playsound
+alarm_time = input("Enter the time of alarm to be set:HH:MM:SS\n")
+alarm_hour=alarm_time[0:2]
+alarm_minute=alarm_time[3:5]
+alarm_seconds=alarm_time[6:8]
+alarm_period = alarm_time[9:11].upper()
+print("Setting up alarm..")
+while True:
+    now = datetime.now()
+    current_hour = now.strftime("%I")
+    current_minute = now.strftime("%M")
+    current_seconds = now.strftime("%S")
+    current_period = now.strftime("%p")
+    if(alarm_period==current_period):
+        if(alarm_hour==current_hour):
+            if(alarm_minute==current_minute):
+                if(alarm_seconds==current_seconds):
+                    print("Wake Up!")
+                    playsound('audio.mp3')
+                    break
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+ email = input("Enter Your Email: ").strip()
+username = email[:email.index("@")]
+domain_name = email[email.index("@")+1:]
+format_ = (f"Your user name is '{username}' and your domain is '{domain_name}'")
+print(format_)
